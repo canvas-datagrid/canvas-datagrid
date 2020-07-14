@@ -26,5 +26,10 @@ jobs:
       run: npm test
     - name: Build production and debug versions
       run: npm run build-all
-    - name: Build docs
+    - name: Build documentation
       run: npm run build-docs
+    - name: Publish documentation to GitHub pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_dir: ./public
