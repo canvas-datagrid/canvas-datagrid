@@ -152,6 +152,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 ['showPerformance', false],
                 ['showRowHeaders', true],
                 ['showRowNumbers', true],
+                ['singleSelectionMode', false],
                 ['snapToRow', false],
                 ['touchContextMenuTimeMs', 800],
                 ['touchDeadZone', 3],
@@ -792,7 +793,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         function drawOnAllImagesLoaded() {
             var loaded = true;
             Object.keys(self.htmlImageCache).forEach(function (html) {
-                if (!self.htmlImageCache[html].complete) {
+                if (!self.htmlImageCache[html].img.complete) {
                     loaded = false;
                 }
             });
@@ -808,8 +809,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 x = cell.x + self.canvasOffsetLeft,
                 y = cell.y + self.canvasOffsetTop;
             if (self.htmlImageCache[cacheKey]) {
-                img = self.htmlImageCache[cacheKey];
-                if (img.height !== cell.height || img.width !== cell.width) {
+                img = self.htmlImageCache[cacheKey].img;
+                if (self.htmlImageCache[cacheKey].height !== cell.height || self.htmlImageCache[cacheKey].width !== cell.width) {
                     // height and width of the cell has changed, invalidate cache
                     self.htmlImageCache[cacheKey] = undefined;
                 } else {
@@ -822,7 +823,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 cachedImagesDrawn = false;
             }
             img = new Image(cell.width, cell.height);
-            self.htmlImageCache[cacheKey] = img;
+            self.htmlImageCache[cacheKey] = { img, width: cell.width, height: cell.height };
             img.onload = function () {
                 self.ctx.drawImage(img, x, y);
                 drawOnAllImagesLoaded();
@@ -2513,7 +2514,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                 return;
             }
             self.mouse = overridePos || self.getLayerPos(e);
-            var ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
+            var ctrl = ((e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode) && !self.attributes.singleSelectionMode),
                 i,
                 s = self.getSchema(),
                 dragBounds,
@@ -2630,7 +2631,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
         self.click = function (e, overridePos) {
             var i,
                 startingBounds = JSON.stringify(self.getSelectionBounds()),
-                ctrl = (e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode),
+                ctrl = ((e.ctrlKey || e.metaKey || self.attributes.persistantSelectionMode) && !self.attributes.singleSelectionMode),
                 pos = overridePos || self.getLayerPos(e);
             self.currentCell = self.getCellAt(pos.x, pos.y);
             if (self.currentCell.grid !== undefined) {
@@ -6940,14 +6941,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
          * @param {number} columnIndex The column index of the cell to check.
          * @param {number} rowIndex The row index of the cell to check.
          */
-        /**
-         * Checks if a cell is currently visible.
-         * @memberof canvasDatagrid
-         * @name isCellVisible
-         * @method
-         * @returns {boolean} when true, the cell is visible, when false the cell is not currently drawn.
-         * @param {cell} cell The cell to check for.  Alternatively you can pass an object { x: <x-pixel-value>, y: <y-pixel-value> }.
-         */
         self.isCellVisible = function (cell, rowIndex) {
             // overload
             if (rowIndex !== undefined) {
@@ -7344,6 +7337,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jslint browser
                         name: key,
                         title: isNaN(parseInt(key, 10)) ? key : self.integerToAlpha(key).toUpperCase(),
                         index: index,
+                        columnIndex: index,
                         type: type,
                         filter: self.filter(type)
                     };
