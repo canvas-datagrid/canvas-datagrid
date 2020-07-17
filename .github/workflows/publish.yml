@@ -1,6 +1,8 @@
 name: Publish to NPM and update documentation
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
 
 jobs:
   publish:
