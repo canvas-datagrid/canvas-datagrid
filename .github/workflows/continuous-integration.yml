@@ -40,5 +40,5 @@ jobs:
       run: npm run build-all
     - uses: actions/upload-artifact@v2
       with:
-        name: dist ${{ github.ref }}
+        name: dist
         path: ./dist
