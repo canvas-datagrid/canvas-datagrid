@@ -29,6 +29,9 @@
     "datatable",
     "component"
   ],
+  "browserslist": [
+    "defaults"
+  ],
   "author": "Tony Germaneri <Tony.Germaneri@gmail.com>",
   "contributors": [
     {
@@ -47,6 +50,9 @@
   },
   "homepage": "https://github.com/TonyGermaneri/canvas-datagrid#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
