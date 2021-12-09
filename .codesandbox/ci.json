@@ -1,3 +1,3 @@
 {
-  "sandboxes": ["vanilla", "./sandbox/"]
+  "sandboxes": ["vanilla", "./sandbox/", "../sandbox/"]
 }
