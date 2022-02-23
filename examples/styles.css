@@ -1,0 +1,21 @@
+:root {
+  --blue: #2980b9;
+  --red: #e04a21;
+
+  --gray-0: #2c3e50;
+  --gray-1: #333;
+  --gray-2: #354b61;
+  --gray-3: #c6c8c9;
+  --gray-4: #ecf0f1;
+  --gray-5: #eee;
+
+  --color: var(--blue);
+  --highlight: var(--red);
+  --background: var(--gray-4);
+  --accent: var(--gray-2);
+  --header-background: var(--gray-0);
+  --header-color: var(--gray-3);
+  --header-accent: var(--blue);
+  --code-color: var(--gray-1);
+  --code-background: var(--gray-5);
+}
