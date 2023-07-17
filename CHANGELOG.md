@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.4.8 - 2023-07-17
+
+### Added
+
+- Add `registerFilter` and `unregisterFilter` to allow for custom filtering
+
 ## 0.4.7 - 2023-05-22
 
 - Ensure only cells from selection get copied onto clipboard (mdebrauw, #556)
@@ -15,17 +21,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.4.6 - 2023-04-03
 
-## Added
+### Added
 
 - Add class name to allow targeting context menu by CSS (ilyaem, #526)
 
-## Changed
+### Changed
 
 - Add more tests for properties `selections` and `selectionList` (hangxingliu, #505)
 - Improve row/column resizing (velitasali, #502)
 - Re-implement(Optimize) select function (hangxingliu, #498)
 
-## Fixed
+### Fixed
 
 - Fix sorting on header click (romanstetsyk, #550)
 - Fix activeColumnHeaderCell docs (HitomiTenshi, #513)
@@ -33,55 +39,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.4.5 - 2022-03-16
 
-## Added
+### Added
 
 - Added support for filling cells using a user-passed fill function (velitasali, #500)
 
 ## 0.4.4 - 2022-02-23
 
-## Added
+### Added
 
 - Introduce frozen style markers (like Google Sheets) (xianzhi3, hangxingliu, #483)
 - Dispatch column hide/unhide events (mdebrauw, #491)
 - Allow cell editor overflow with long content (xianzhi3, #492)
 
-## Fixed
+### Fixed
 
 - Fix bug that cleared the canvas under a certain unusual refresh flow (hangxingliu, #494)
 
 ## 0.4.3 - 2022-02-16
 
-## Added
+### Added
 
 - Ability to hide rows/cols with UI toggle (hangxingliu, #480)
 - Add Vue setup instructions (Bouke Versteegh, #482)
 
-## Fixed
+### Fixed
 
 - Update column resizing including header (xianzhi3, #486)
 
 ## 0.4.2 - 2022-01-22
 
-## Fixed
+### Fixed
 
 - Cancel moving when cursor exits grid (xianzhi3 #476)
 - Fix clearing cells when grid is filtered (mdebrauw, #478)
 
 ## 0.4.1 - 2022-01-19
 
-## Fixed
+### Fixed
 
 - Update row/column selection (xianzhi3, #467)
 - Fix the behavior of the conext menu item used to hide column (hangxingliu, #470)
 
 ## 0.4.0 - 2022-01-10
 
-## Added
+### Added
 
 - Feature: Add column/row grouping for tables (xianzhi3, #453)
 - Feature: Add support for grouped columns (hangxingliu, #443)
 
-## Fixed
+### Fixed
 
 - Update ESLint config for incorrect errors. (hangxingliu, #465)
 - Fix: Columns are hidden when there are frozen columns and hidden columns simultaneously (hangxingliu, #462)
