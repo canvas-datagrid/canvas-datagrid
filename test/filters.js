@@ -1,4 +1,4 @@
-import { g, assertIf, doAssert  } from './util.js';
+import { g, assertIf, doAssert } from './util.js';
 
 export default function () {
   it('Should filter for given value', function (done) {
@@ -196,5 +196,33 @@ export default function () {
         'Expected filter to filter ignore rows on and above frozen row.',
       ),
     );
-  });  
+  });
+
+  it('should call a filter function for filtering, if set', function (done) {
+    var grid = g({
+      test: this.test,
+      data: [
+        { d: 'baz' },
+        { d: 'foo frozen row' },
+        { d: 'foo1' },
+        { d: 'foo2' },
+        { d: 'bar' },
+      ],
+    });
+
+    const filterFn = () => false;
+
+    grid.registerFilter(filterFn);
+
+    grid.refresh();
+
+    done(
+      doAssert(
+        grid.viewData.length === 0,
+        'Expected filter to filter all rows out',
+      ),
+    );
+
+    grid.unregisterFilter(filterFn);
+  });
 }
