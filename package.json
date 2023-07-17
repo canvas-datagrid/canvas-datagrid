@@ -1,5 +1,5 @@
 {
-  "name": "@ndrsn/canvas-datagrid",
+  "name": "@canvas-datagrid/canvas-datagrid",
   "version": "0.4.7",
   "description": "Canvas based data grid web component. Capable of displaying millions of contiguous hierarchical rows and columns without paging or loading, on a single canvas element.",
   "main": "./dist/canvas-datagrid.js",
@@ -27,7 +27,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TonyGermaneri/canvas-datagrid.git"
+    "url": "git+https://github.com/canvas-datagrid/canvas-datagrid.git"
   },
   "keywords": [
     "data",
@@ -48,11 +48,12 @@
     " (https://github.com/TonyGermaneri/canvas-datagrid/graphs/contributors)"
   ],
   "maintainers": [
-    "Tony Germaneri <Tony.Germaneri@gmail.com>"
+    "Tony Germaneri <Tony.Germaneri@gmail.com>",
+    "Jona Andersen <jona@ndrsn.org>"
   ],
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/TonyGermaneri/canvas-datagrid/issues"
+    "url": "https://github.com/canvas-datagrid/canvas-datagrid/issues"
   },
   "homepage": "https://canvas-datagrid.js.org/",
   "husky": {
