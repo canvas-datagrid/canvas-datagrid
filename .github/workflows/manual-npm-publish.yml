@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Login
+        run: npm login
       - name: Publish NPM Module
         run: npm publish
         env:
